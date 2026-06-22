@@ -38,12 +38,6 @@
     section { padding: 5rem 2rem; }
     .container { max-width: 900px; margin: 0 auto; }
 
-    .icon {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 1em; height: 1em; vertical-align: -0.125em; flex-shrink: 0;
-    }
-    .icon svg { width: 100%; height: 100%; display: block; }
-
     /* HERO */
     #hero { background: var(--navy); padding: 7rem 2rem 6rem; position: relative; overflow: hidden; }
     #hero::before {
@@ -66,14 +60,12 @@
       transition: background 0.2s, transform 0.15s;
     }
     .hero-cta:hover { background: #155a8a; transform: translateY(-1px); }
-    .hero-cta svg { width: 14px; height: 14px; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
       background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
       color: rgba(255,255,255,0.6); padding: 0.5rem 1rem; border-radius: 50px;
       font-size: 0.8rem; margin-left: 1rem;
     }
-    .hero-badge .icon { width: 0.95em; height: 0.95em; }
 
     /* SHARED */
     .section-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; display: block; }
@@ -84,7 +76,7 @@
     #problem { background: var(--cream); }
     .gap-cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 1.25rem; margin-top: 2.5rem; }
     .gap-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
-    .gap-card-icon { width: 24px; height: 24px; color: var(--teal); margin-bottom: 0.75rem; }
+    .gap-card-icon { width: 28px; height: 28px; color: var(--teal); margin-bottom: 0.75rem; }
     .gap-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
     .gap-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
 
@@ -98,7 +90,6 @@
       border-radius: 50px; display: inline-flex; align-items: center; gap: 0.4rem;
       margin-bottom: 1rem; align-self: flex-start;
     }
-    .journey-phase-label .icon { width: 0.85em; height: 0.85em; }
     .journey-step { display: grid; grid-template-columns: 48px 1fr; gap: 1.25rem; align-items: flex-start; padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
     .journey-step:last-child { border-bottom: none; }
     .step-num { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
@@ -144,8 +135,7 @@
     #setup-screen { display: block; }
     .demo-intro { font-size: 0.95rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.75rem; }
     .par-box { background: var(--teal-light); border: 1px solid #B8D9F0; border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1.75rem; }
-    .par-box h4 { font-size: 0.85rem; font-weight: 600; color: var(--teal); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
-    .par-box h4 .icon { width: 0.95em; height: 0.95em; }
+    .par-box-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 600; color: var(--teal); margin-bottom: 0.5rem; }
     .par-box p { font-size: 0.88rem; color: #1A4A6E; line-height: 1.6; }
     .par-box strong { color: var(--teal); }
     .demo-fields { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
@@ -156,8 +146,14 @@
       color: var(--text); background: var(--white); transition: border-color 0.2s; outline: none;
     }
     .demo-fields input:focus { border-color: var(--teal); }
-    .field-hint { font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; line-height: 1.5; }
-    .field-hint a { color: var(--teal); }
+    .demo-fields input[type="password"] { font-family: var(--font-mono); letter-spacing: 0.05em; }
+    .api-key-hint { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+    .api-key-hint a { color: var(--teal); }
+    .research-note {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.8rem; color: var(--muted); font-style: italic;
+      margin: 0.5rem 0 0;
+    }
     .btn-primary {
       width: 100%; padding: 0.9rem; background: var(--teal); color: var(--white);
       border: none; border-radius: var(--radius); font-family: var(--font-body);
@@ -165,11 +161,7 @@
     }
     .btn-primary:hover { background: #155a8a; transform: translateY(-1px); }
     .btn-primary:disabled { background: #9BB5C8; cursor: not-allowed; transform: none; }
-    .setup-error {
-      display: none; margin-top: 1rem; padding: 0.85rem 1rem;
-      background: var(--red-light); border: 1px solid #F0C0C0; border-radius: var(--radius);
-      font-size: 0.85rem; color: var(--red); line-height: 1.5;
-    }
+    .setup-error { display: none; margin-top: 0.75rem; padding: 0.75rem 1rem; background: var(--red-light); border: 1px solid #F0B0B0; border-radius: var(--radius); font-size: 0.85rem; color: var(--red); }
 
     #interview-screen { display: none; }
     .interview-progress { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
@@ -190,7 +182,6 @@
       font-family: var(--font-body); font-size: 0.88rem; font-weight: 500; color: var(--navy);
       cursor: pointer; transition: all 0.2s;
     }
-    .btn-mic svg { width: 14px; height: 14px; }
     .btn-mic:hover { border-color: var(--teal); color: var(--teal); }
     .btn-mic.recording { background: var(--red-light); border-color: var(--red); color: var(--red); animation: pulse 1.5s infinite; }
     .btn-mic:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -205,22 +196,19 @@
     }
     .answer-textarea:focus { border-color: var(--teal); }
     .btn-submit {
-      display: inline-flex; align-items: center; gap: 0.5rem;
       padding: 0.75rem 1.5rem; background: var(--teal); color: var(--white);
       border: none; border-radius: var(--radius); font-family: var(--font-body);
       font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: background 0.2s;
     }
-    .btn-submit svg { width: 13px; height: 13px; }
     .btn-submit:hover { background: #155a8a; }
     .btn-submit:disabled { background: #9BB5C8; cursor: not-allowed; }
 
     .feedback-card { border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; margin-top: 1.25rem; }
     .feedback-header { padding: 0.85rem 1.25rem; background: var(--cream); border-bottom: 1px solid var(--border); font-size: 0.82rem; font-weight: 600; color: var(--navy); display: flex; align-items: center; gap: 0.5rem; }
-    .feedback-header .icon { width: 0.95em; height: 0.95em; color: var(--teal); }
     .feedback-body { padding: 1.25rem; }
     .feedback-row { display: flex; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
     .feedback-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .feedback-icon { width: 18px; height: 18px; color: var(--teal); flex-shrink: 0; margin-top: 1px; }
+    .feedback-icon { flex-shrink: 0; margin-top: 2px; color: var(--teal); }
     .feedback-row-content h4 { font-size: 0.82rem; font-weight: 600; color: var(--navy); margin-bottom: 0.25rem; }
     .feedback-row-content p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
 
@@ -230,15 +218,9 @@
     .thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
     @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
 
-    .api-error-box {
-      display: none; margin-top: 1rem; padding: 0.85rem 1rem;
-      background: var(--red-light); border: 1px solid #F0C0C0; border-radius: var(--radius);
-      font-size: 0.85rem; color: var(--red); line-height: 1.5;
-    }
-
     #summary-screen { display: none; }
     .summary-hero { text-align: center; padding: 1.5rem 0 1rem; }
-    .summary-hero-icon { width: 40px; height: 40px; color: var(--gold); margin: 0 auto 0.5rem; }
+    .summary-icon { margin-bottom: 0.5rem; color: var(--green); }
     .summary-hero h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--navy); margin-bottom: 0.4rem; }
     .summary-hero p { font-size: 0.92rem; color: var(--muted); }
     .summary-cards { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
@@ -246,7 +228,6 @@
     .summary-card.strength { background: var(--green-light); border-color: #A8DCC0; }
     .summary-card.growth { background: var(--gold-light); border-color: #F0D090; }
     .summary-card h4 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem; }
-    .summary-card h4 .icon { width: 0.9em; height: 0.9em; }
     .summary-card.strength h4 { color: var(--green); }
     .summary-card.growth h4 { color: #7A4A00; }
     .summary-card p { font-size: 0.9rem; color: var(--text); line-height: 1.6; }
@@ -257,18 +238,14 @@
       font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: all 0.2s;
       display: flex; align-items: center; justify-content: center; gap: 0.5rem;
     }
-    .btn-restart svg { width: 13px; height: 13px; }
     .btn-restart:hover { border-color: var(--teal); color: var(--teal); }
 
     /* ABOUT */
     #about { background: var(--white); }
     .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; margin-top: 2rem; }
-    .about-tag { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; }
-    .about-name { font-family: var(--font-display); font-size: 1.8rem; color: var(--navy); margin-bottom: 0.75rem; }
+    .about-name { font-family: var(--font-display); font-size: 1.8rem; color: var(--navy); margin-bottom: 0.4rem; }
+    .about-role { font-size: 0.88rem; color: var(--muted); margin-bottom: 1rem; font-family: var(--font-mono); }
     .about-body { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 1rem; }
-    .linkedin-card { background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-top: 1.5rem; }
-    .linkedin-card-label { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; display: block; }
-    .linkedin-card p { font-size: 0.88rem; color: var(--text); line-height: 1.7; font-style: italic; }
 
     footer { background: var(--navy); padding: 2rem; text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.35); }
     footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
@@ -304,10 +281,12 @@
     <p class="hero-subtitle">Braven Bridge is an AI-powered preparation layer that gets Fellows interview-ready before the moments Braven already creates — without replacing a single one of them.</p>
     <a href="#demo" class="hero-cta">
       Try the live demo
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <!-- arrow right icon -->
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
     <span class="hero-badge">
-      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+      <!-- handshake / users icon -->
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
       Built for Braven Fellows in Chicago
     </span>
   </div>
@@ -321,16 +300,19 @@
     <p class="section-body">First-generation students don't have a parent who works in tech to run practice sessions at the kitchen table. They don't have a family friend at the company to give them the inside track. The gap isn't knowledge — it's practice.</p>
     <div class="gap-cards">
       <div class="gap-card">
+        <!-- repeat / loop icon -->
         <svg class="gap-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
         <h3>Not enough repetition</h3>
         <p>One mock interview event builds awareness. Dozens of reps build fluency. Fellows need more practice than any volunteer program can provide at scale.</p>
       </div>
       <div class="gap-card">
+        <!-- target icon -->
         <svg class="gap-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         <h3>Generic preparation</h3>
         <p>Practice questions should be tailored to the specific companies Fellows are targeting — not one-size-fits-all. Generic prep produces generic answers.</p>
       </div>
       <div class="gap-card">
+        <!-- clock icon -->
         <svg class="gap-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         <h3>Mentors arrive cold</h3>
         <p>Professional Mentors spend precious 1:1 time learning where a Fellow is — time better spent coaching them forward.</p>
@@ -346,7 +328,8 @@
     <p class="section-body">Braven Bridge slots into Braven's existing post-course support phase. It doesn't replace anything — it makes every existing touchpoint more powerful.</p>
     <div class="journey">
       <div class="journey-phase-label">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+        <!-- arrow up icon -->
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
         Existing Braven — Accelerator course + mock interview event
       </div>
       <div class="journey-step">
@@ -382,7 +365,8 @@
         </div>
       </div>
       <div class="journey-phase-label" style="margin-top:1.25rem;">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span>
+        <!-- arrow down icon -->
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
         Existing Braven — Employer match + real interview + post-course support
       </div>
     </div>
@@ -426,7 +410,7 @@
   <div class="container">
     <span class="section-eyebrow">Live Demo</span>
     <h2 class="section-title">Try a Braven Bridge mock interview.</h2>
-    <p class="section-body">This is a real AI mock interview powered by Claude. Enter your name and a target company, and Claude will ask you three interview questions drawn from Braven's question bank — then give you feedback based on Braven's actual assessment framework.</p>
+    <p class="section-body">This is a real AI mock interview powered by Claude. Enter your name and a target company, and Claude will research that company, then ask you three tailored interview questions — including one grounded in something real and current about the company. After each answer, you'll get specific feedback based on Braven's actual assessment framework.</p>
     <p class="section-body" style="font-size:0.88rem;">Note: In a full Braven Bridge session, your mentor would coach you on presence and delivery. Here, we're focused on your storytelling and structure — the dimensions Claude can genuinely assess.</p>
 
     <div class="demo-wrapper">
@@ -441,10 +425,11 @@
         <div id="setup-screen">
           <p class="demo-intro">You'll answer 3 questions tailored to your target company. Claude will give you feedback after each answer on engagement, professionalism, and storytelling. You can speak your answers or type them.</p>
           <div class="par-box">
-            <h4>
-              <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
+            <div class="par-box-label">
+              <!-- book icon -->
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
               The PAR Framework — what Claude listens for
-            </h4>
+            </div>
             <p>Structure your answers around: <strong>Problem</strong> (the situation you faced), <strong>Action</strong> (what you specifically did), and <strong>Result</strong> (what happened because of your actions). This is how strong interview answers are built.</p>
           </div>
           <div class="demo-fields">
@@ -461,9 +446,9 @@
               <input type="text" id="target-role" placeholder="e.g. Marketing Coordinator, Software Engineer Intern..." />
             </div>
             <div>
-              <label for="api-key-input">Anthropic API key</label>
-              <input type="password" id="api-key-input" placeholder="sk-ant-..." autocomplete="off" />
-              <p class="field-hint">Required to connect to Claude for this live demo. Your key stays in your browser for this session only and is never stored or sent anywhere besides Anthropic's API. Get one at <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a>.</p>
+              <label for="api-key">Anthropic API key</label>
+              <input type="password" id="api-key" placeholder="sk-ant-…" autocomplete="off" />
+              <p class="api-key-hint">Required to connect to Claude. Used only in your browser — never stored. Get one at <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a>.</p>
             </div>
           </div>
           <button class="btn-primary" id="start-btn" onclick="startInterview()">Start my mock interview →</button>
@@ -483,25 +468,25 @@
             <span class="voice-hint">Speak your answer aloud, or type it below. Click Stop when you're done speaking.</span>
             <div class="voice-controls">
               <button class="btn-mic" id="mic-btn" onclick="toggleRecording()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-                <span id="mic-btn-label">Start speaking</span>
+                <!-- mic icon -->
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                <span id="mic-label">Start speaking</span>
               </button>
               <span class="mic-status" id="mic-status"></span>
             </div>
           </div>
           <textarea class="answer-textarea" id="answer-input" placeholder="Your spoken words will appear here, or type your answer directly..."></textarea>
-          <button class="btn-submit" id="submit-btn" onclick="submitAnswer()">
-            Submit answer
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
-          <div class="api-error-box" id="api-error-box"></div>
+          <button class="btn-submit" id="submit-btn" onclick="submitAnswer()">Submit answer →</button>
           <div id="feedback-area"></div>
           <div style="margin-top:1rem;" id="next-btn-area"></div>
         </div>
 
         <div id="summary-screen">
           <div class="summary-hero">
-            <svg class="summary-hero-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="summary-icon">
+              <!-- check circle icon -->
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
             <h3 id="summary-title">Great work!</h3>
             <p id="summary-subtitle">Here's how your mock interview went.</p>
           </div>
@@ -515,7 +500,8 @@
             <strong>Next step:</strong> Share this feedback with your Braven Professional Mentor before your next 1:1. They'll use it to focus your human mock interview on what AI can't assess — your presence, energy, and delivery. That's where the real polish happens.
           </div>
           <button class="btn-restart" onclick="restartDemo()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+            <!-- undo icon -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
             Start a new session
           </button>
         </div>
@@ -531,7 +517,7 @@
     <div class="about-grid">
       <div>
         <h2 class="about-name">Hi, I'm Dahlia.</h2>
-        <p class="about-tag">Claude Corps Fellowship Applicant</p>
+        <p class="about-role">Claude Corps Fellowship Applicant</p>
       </div>
       <div>
         <p class="about-body">I'm a recent graduate and the first among my friends and family to work in tech. I know firsthand what it feels like to have the skills but not the network — to be ready for a room you've never been invited into before.</p>
@@ -549,11 +535,10 @@
 <script>
   let fellowName = '', targetCompany = '', targetRole = '', apiKey = '';
   let currentQuestion = 0, questions = [], allFeedback = [];
+  let companyResearch = ''; // cached research notes, gathered once, reused across all 3 questions
   let recognition = null, isRecording = false;
 
-  const iconStar = `<span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.39 6.51L21 10l-5.5 4.5L17 21l-5-3.5L7 21l1.5-6.5L3 10l6.61-1.49L12 2z"/></svg></span>`;
-  const iconTarget = `<span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>`;
-
+  /* ── Speech ─────────────────────────────────────────── */
   function initSpeech() {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) return null;
@@ -565,6 +550,7 @@
       document.getElementById('answer-input').value = t;
     };
     r.onerror = () => { stopRecording(); document.getElementById('mic-status').textContent = 'Microphone unavailable — please type your answer.'; };
+    r.onend = () => { if (isRecording) stopRecording(); };
     return r;
   }
 
@@ -575,8 +561,8 @@
     if (!recognition) { document.getElementById('mic-status').textContent = 'Voice not supported in this browser — please type your answer.'; return; }
     recognition.start(); isRecording = true;
     const btn = document.getElementById('mic-btn');
-    btn.classList.add('recording');
-    document.getElementById('mic-btn-label').textContent = 'Stop speaking';
+    const lbl = document.getElementById('mic-label');
+    lbl.textContent = 'Stop speaking'; btn.classList.add('recording');
     document.getElementById('mic-status').textContent = 'Listening...';
   }
 
@@ -584,67 +570,130 @@
     if (recognition && isRecording) recognition.stop();
     isRecording = false;
     const btn = document.getElementById('mic-btn');
-    btn.classList.remove('recording');
-    document.getElementById('mic-btn-label').textContent = 'Start speaking';
+    const lbl = document.getElementById('mic-label');
+    lbl.textContent = 'Start speaking'; btn.classList.remove('recording');
     document.getElementById('mic-status').textContent = '';
   }
 
-  const questionBank = [
-    { cat: 'General Introduction', q: 'Tell me about yourself and why you\'re interested in working at {company}.' },
-    { cat: 'Fit for Role', q: 'What is your greatest strength, and can you give me a specific example of how you\'ve used it?' },
-    { cat: 'Teamwork', q: 'Describe a time when you had a conflict with a team member. How did you handle it, and what was the result?' },
-    { cat: 'Leadership', q: 'Tell me about a time you took initiative on something without being asked.' },
-    { cat: 'Problem Solving', q: 'Give me an example of a time you had to think creatively to solve a difficult problem.' },
-    { cat: 'Communication', q: 'Tell me about a time you had to persuade someone to see things your way.' },
-    { cat: 'Fit for Role', q: 'Where do you see yourself in five years, and how does a role at {company} fit into that path?' },
-    { cat: 'Closing', q: 'What questions do you have for us about the role or the culture at {company}?' },
+  /* ── Question categories used to keep the 3 questions varied ── */
+  const QUESTION_ANGLES = [
+    'a behavioral question about teamwork, conflict, or collaboration',
+    'a behavioral question about initiative, leadership, or ownership',
+    'a question specifically about why this Fellow wants to work at this company, tied to something real and current about the company',
   ];
 
-  function shuffle(arr) {
-    const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
-    return a;
+  /* ── Claude API helper ───────────────────────────────── */
+  async function claudeAPI(payload) {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true',
+      },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      if (res.status === 401) throw new Error('Invalid API key. Please restart and check your key.');
+      if (res.status === 429) throw new Error('Rate limit reached. Please wait a moment and try again.');
+      throw new Error(err?.error?.message || `API error ${res.status}`);
+    }
+    return res.json();
+  }
+
+  /* Pull all text blocks out of a response, ignoring tool_use/tool_result blocks */
+  function extractText(data) {
+    return (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('').trim();
+  }
+
+  function stripJsonFence(raw) {
+    return raw.replace(/```json|```/g, '').trim();
+  }
+
+  /* ── Start ──────────────────────────────────────────── */
+  async function startInterview() {
+    const errEl = document.getElementById('setup-error');
+    errEl.style.display = 'none';
+
+    fellowName    = document.getElementById('fellow-name').value.trim() || 'Fellow';
+    targetCompany = document.getElementById('target-company').value.trim();
+    targetRole    = document.getElementById('target-role').value.trim();
+    apiKey        = document.getElementById('api-key').value.trim();
+
+    if (!targetCompany) { showSetupError('Please enter a target company.'); return; }
+    if (!apiKey)        { showSetupError('Please enter your Anthropic API key so Claude can power the interview.'); return; }
+    if (!apiKey.startsWith('sk-ant-')) { showSetupError('That doesn\'t look like a valid Anthropic API key (should start with sk-ant-).'); return; }
+
+    const btn = document.getElementById('start-btn');
+    btn.disabled = true; btn.textContent = 'Researching ' + targetCompany + '...';
+
+    currentQuestion = 0; allFeedback = []; questions = []; companyResearch = '';
+
+    try {
+      // One research call up front — Claude actually looks up the company via web search.
+      // We cache the findings and reuse them for all 3 question-generation calls below,
+      // so we don't re-research the same company 3 times.
+      const roleCtx = targetRole ? ` for a ${targetRole} role` : '';
+      const researchPrompt = `Research the company "${targetCompany}" using web search. Find: (1) what the company actually does and who its customers are, (2) something specific and current — a recent product, initiative, news item, or stated value — that a job candidate could genuinely reference in an interview, (3) what kind of culture or qualities the company seems to look for in employees, based on its careers page or public materials if you can find them.
+
+Write 4-6 sentences of research notes a mock interview coach would use to ask this candidate (targeting${roleCtx} at ${targetCompany}) good, specific questions. Be factual — don't invent details you didn't find. If the company is small, obscure, or you can't find much, say so plainly and note what you do know.`;
+
+      const researchData = await claudeAPI({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 600,
+        messages: [{ role: 'user', content: researchPrompt }],
+        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+      });
+      companyResearch = extractText(researchData) || `No detailed research found for ${targetCompany} — proceeding with general best-practice interview questions.`;
+
+      // Generate all 3 questions in one call, now that we have real research to ground them in
+      const roleLine = targetRole ? `Target role: ${targetRole}` : 'Target role: not specified';
+      const questionsPrompt = `You are Braven Bridge, an AI mock interview coach for Braven Fellows — first-generation, low-income college students preparing for their first professional interviews.
+
+Fellow: ${fellowName}
+Target company: ${targetCompany}
+${roleLine}
+
+Research notes on the company:
+${companyResearch}
+
+Write exactly 3 interview questions for this Fellow:
+Q1: ${QUESTION_ANGLES[0]}
+Q2: ${QUESTION_ANGLES[1]}
+Q3: ${QUESTION_ANGLES[2]} — this one MUST reference something specific from the research notes above (a real product, value, initiative, or fact), not a generic "why do you want to work here."
+
+Each question should sound like a real interviewer at ${targetCompany} could plausibly ask it. Keep each question to 1-2 sentences.
+
+Return ONLY valid JSON, no markdown, no preamble:
+{"questions":[{"cat":"short 2-3 word label","q":"question text"},{"cat":"...","q":"..."},{"cat":"...","q":"..."}]}`;
+
+      const qData = await claudeAPI({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 700,
+        messages: [{ role: 'user', content: questionsPrompt }],
+      });
+      const qRaw = extractText(qData);
+      const parsed = JSON.parse(stripJsonFence(qRaw));
+      questions = parsed.questions;
+
+      document.getElementById('setup-screen').style.display = 'none';
+      document.getElementById('interview-screen').style.display = 'block';
+      showQuestion();
+    } catch (err) {
+      showSetupError(err.message || 'Something went wrong setting up the interview. Please check your API key and try again.');
+    }
   }
 
   function showSetupError(msg) {
     const el = document.getElementById('setup-error');
-    el.textContent = msg;
-    el.style.display = 'block';
-  }
-  function clearSetupError() {
-    const el = document.getElementById('setup-error');
-    el.textContent = ''; el.style.display = 'none';
-  }
-  function showApiError(msg) {
-    const el = document.getElementById('api-error-box');
-    el.textContent = msg;
-    el.style.display = 'block';
-  }
-  function clearApiError() {
-    const el = document.getElementById('api-error-box');
-    el.textContent = ''; el.style.display = 'none';
-  }
-
-  function startInterview() {
-    clearSetupError();
-    fellowName    = document.getElementById('fellow-name').value.trim() || 'Fellow';
-    targetCompany = document.getElementById('target-company').value.trim() || 'your target company';
-    targetRole    = document.getElementById('target-role').value.trim();
-    apiKey        = document.getElementById('api-key-input').value.trim();
-
-    if (!apiKey) { showSetupError('Please enter your Anthropic API key so Claude can power this demo.'); return; }
-    if (!apiKey.startsWith('sk-ant-')) { showSetupError('That doesn\'t look like a valid Anthropic API key — it should start with "sk-ant-".'); return; }
-
+    el.textContent = msg; el.style.display = 'block';
     const btn = document.getElementById('start-btn');
-    btn.disabled = true; btn.textContent = 'Setting up your interview...';
-    const pool = shuffle(questionBank);
-    questions = pool.slice(0,3).map(q => ({ cat: q.cat, q: q.q.replace(/{company}/g, targetCompany) }));
-    currentQuestion = 0; allFeedback = [];
-    document.getElementById('setup-screen').style.display = 'none';
-    document.getElementById('interview-screen').style.display = 'block';
-    showQuestion();
+    btn.disabled = false; btn.textContent = 'Start my mock interview →';
   }
 
+  /* ── Show question ──────────────────────────────────── */
   function showQuestion() {
     const q = questions[currentQuestion];
     document.getElementById('question-cat').textContent = q.cat;
@@ -655,83 +704,66 @@
     document.getElementById('submit-btn').disabled = false;
     document.getElementById('mic-btn').disabled = false;
     document.getElementById('mic-status').textContent = '';
-    clearApiError();
     const pct = (currentQuestion / 3) * 100;
     document.getElementById('progress-fill').style.width = pct + '%';
-    document.getElementById('progress-label').textContent = `Question ${currentQuestion+1} of 3`;
+    document.getElementById('progress-label').textContent = `Question ${currentQuestion + 1} of 3`;
     if (isRecording) stopRecording();
   }
 
-  async function callClaude(body) {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true',
-      },
-      body: JSON.stringify(body)
-    });
-    if (!res.ok) {
-      let detail = '';
-      try { const errJson = await res.json(); detail = errJson?.error?.message || ''; } catch(e) {}
-      if (res.status === 401) throw new Error('Your API key was rejected. Please check it and try again.');
-      if (res.status === 429) throw new Error('Rate limit reached. Please wait a moment and try again.');
-      if (res.status === 529) throw new Error('Claude is temporarily overloaded. Please try again in a moment.');
-      throw new Error(detail || `Something went wrong (error ${res.status}). Please try again.`);
-    }
-    return res.json();
-  }
-
+  /* ── Submit answer ──────────────────────────────────── */
   async function submitAnswer() {
     const answer = document.getElementById('answer-input').value.trim();
     if (!answer) { document.getElementById('mic-status').textContent = 'Please share your answer before submitting.'; return; }
     stopRecording();
-    clearApiError();
     document.getElementById('submit-btn').disabled = true;
     document.getElementById('mic-btn').disabled = true;
     const feedbackArea = document.getElementById('feedback-area');
     feedbackArea.innerHTML = `<div class="thinking-indicator"><div class="thinking-dots"><span></span><span></span><span></span></div>Claude is reviewing your answer...</div>`;
+
     const q = questions[currentQuestion];
     const roleCtx = targetRole ? ` for a ${targetRole} role` : '';
-    const system = `You are an encouraging, warm AI mock interview coach for Braven, a nonprofit that prepares first-generation and low-income college students for their first professional jobs.
 
-Assess interview answers on Braven's three dimensions:
-1. ENGAGEMENT: tone, enthusiasm, energy, confidence
-2. PROFESSIONALISM: clear communication, appropriate language, structured delivery
-3. PAR FRAMEWORK: did they use Problem → Action → Result structure?
+    const system = `You are an encouraging, sharp AI mock interview coach for Braven, a nonprofit that prepares first-generation and low-income college students for their first professional jobs.
 
-Rules:
-- Always lead with a genuine specific strength before any growth note
-- Give ONE specific actionable growth suggestion per dimension — not a list
-- Be warm, encouraging, frame everything with a growth mindset
-- Use "you did well at..." and "one thing to try next time..."
-- Never be harsh — Fellows are building confidence
-- Keep each dimension to 2-3 sentences max
-- Reference the Fellow's name (${fellowName}) naturally at least once
+Assess the Fellow's answer on three dimensions: ENGAGEMENT (tone, energy, confidence), PROFESSIONALISM (clarity, structure, appropriate language), and the PAR FRAMEWORK (did they clearly establish a Problem, describe their specific Action, and state a concrete Result?).
+
+Critical rules for quality feedback:
+- Quote or closely paraphrase something the Fellow ACTUALLY SAID — feedback must reference specific words or moments from their real answer, never generic praise that could apply to any answer.
+- If the Result is vague or missing, say so directly and ask for what specifically changed, in numbers if possible.
+- If the Action is described only in terms of "we" rather than what the Fellow personally did, call that out by name.
+- Give exactly ONE growth suggestion per dimension, and make it concrete enough that the Fellow could revise their answer right now using it.
+- Lead each dimension with one genuine, specific strength before any growth note — but don't manufacture a strength that isn't there. If a dimension is genuinely weak, say "this is the area to focus on" rather than inventing praise.
+- Never use vague filler like "great job" or "good answer" — every sentence should point to something specific in what was said.
+- Reference the Fellow by name (${fellowName}) naturally once.
 
 Return ONLY valid JSON, no markdown, no preamble:
-{"engagement":{"strength":"...","growth":"..."},"professionalism":{"strength":"...","growth":"..."},"par":{"strength":"...","growth":"..."},"overall_strength":"One sentence summary of what they did best.","priority_growth":"One sentence — the single most important thing to work on."}`;
+{"engagement":{"strength":"...","growth":"..."},"professionalism":{"strength":"...","growth":"..."},"par":{"strength":"...","growth":"..."},"overall_strength":"One specific sentence — what they did best, referencing their actual answer.","priority_growth":"One specific sentence — the single most important, concrete thing to fix before the real interview."}`;
 
     try {
-      const data = await callClaude({
-        model: 'claude-sonnet-4-6', max_tokens: 1000,
+      const data = await claudeAPI({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
         system,
-        messages: [{ role: 'user', content: `Fellow: ${fellowName}. Targeting: ${targetCompany}${roleCtx}.\n\nQuestion (${q.cat}): "${q.q}"\n\nAnswer: "${answer}"\n\nAssess and return JSON feedback.` }]
+        messages: [{ role: 'user', content: `Fellow: ${fellowName}. Targeting: ${targetCompany}${roleCtx}.\n\nQuestion (${q.cat}): "${q.q}"\n\nFellow's full answer: "${answer}"\n\nAssess this specific answer and return JSON feedback.` }],
       });
-      const raw = data.content.map(c => c.text||'').join('');
-      const fb = JSON.parse(raw.replace(/```json|```/g,'').trim());
+
+      const raw = extractText(data);
+      const fb = JSON.parse(stripJsonFence(raw));
       allFeedback.push({ q: q.q, answer, feedback: fb });
+
       feedbackArea.innerHTML = `
         <div class="feedback-card">
           <div class="feedback-header">
-            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.39 6.51L21 10l-5.5 4.5L17 21l-5-3.5L7 21l1.5-6.5L3 10l6.61-1.49L12 2z"/></svg></span>
+            <!-- sparkle / star icon -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             Feedback from Claude
           </div>
           <div class="feedback-body">
             <div class="feedback-row">
-              <svg class="feedback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+              <span class="feedback-icon">
+                <!-- message circle icon -->
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              </span>
               <div class="feedback-row-content">
                 <h4>Engagement</h4>
                 <p><strong>What's working:</strong> ${fb.engagement.strength}</p>
@@ -739,7 +771,10 @@ Return ONLY valid JSON, no markdown, no preamble:
               </div>
             </div>
             <div class="feedback-row">
-              <svg class="feedback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+              <span class="feedback-icon">
+                <!-- briefcase icon -->
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+              </span>
               <div class="feedback-row-content">
                 <h4>Professionalism</h4>
                 <p><strong>What's working:</strong> ${fb.professionalism.strength}</p>
@@ -747,7 +782,10 @@ Return ONLY valid JSON, no markdown, no preamble:
               </div>
             </div>
             <div class="feedback-row">
-              <svg class="feedback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+              <span class="feedback-icon">
+                <!-- book icon -->
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+              </span>
               <div class="feedback-row-content">
                 <h4>PAR Storytelling</h4>
                 <p><strong>What's working:</strong> ${fb.par.strength}</p>
@@ -756,16 +794,16 @@ Return ONLY valid JSON, no markdown, no preamble:
             </div>
           </div>
         </div>`;
+
       document.getElementById('mic-btn').disabled = false;
       const nextArea = document.getElementById('next-btn-area');
       if (currentQuestion < 2) {
-        nextArea.innerHTML = `<button class="btn-submit" onclick="nextQuestion()">Next question <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>`;
+        nextArea.innerHTML = `<button class="btn-submit" onclick="nextQuestion()">Next question →</button>`;
       } else {
-        nextArea.innerHTML = `<button class="btn-submit" onclick="showSummary()">See my full summary <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>`;
+        nextArea.innerHTML = `<button class="btn-submit" onclick="showSummary()">See my full summary →</button>`;
       }
-    } catch(err) {
-      feedbackArea.innerHTML = '';
-      showApiError(err.message || 'Something went wrong getting feedback. Please check your API key and try again.');
+    } catch (err) {
+      feedbackArea.innerHTML = `<p style="color:var(--red);font-size:0.88rem;padding:1rem 0;">${err.message || 'Something went wrong getting feedback. Please try again.'}</p>`;
       document.getElementById('submit-btn').disabled = false;
       document.getElementById('mic-btn').disabled = false;
     }
@@ -773,44 +811,65 @@ Return ONLY valid JSON, no markdown, no preamble:
 
   function nextQuestion() { currentQuestion++; showQuestion(); }
 
+  /* ── Summary ────────────────────────────────────────── */
   async function showSummary() {
     document.getElementById('interview-screen').style.display = 'none';
     document.getElementById('summary-screen').style.display = 'block';
     document.getElementById('progress-fill').style.width = '100%';
     document.getElementById('summary-title').textContent = `Great work, ${fellowName}!`;
     document.getElementById('summary-subtitle').textContent = 'You completed all 3 questions. Here\'s what stood out.';
-    let strength = allFeedback[0]?.feedback.overall_strength || 'You showed real effort and engagement throughout.';
-    let growth = allFeedback[allFeedback.length-1]?.feedback.priority_growth || 'Keep practicing your PAR storytelling for even stronger answers.';
+
+    document.getElementById('summary-cards').innerHTML = `<div class="thinking-indicator"><div class="thinking-dots"><span></span><span></span><span></span></div>Pulling your summary together...</div>`;
+
+    let strength = allFeedback[0]?.feedback.overall_strength || `${fellowName} showed real effort and engagement throughout.`;
+    let growth   = allFeedback[allFeedback.length - 1]?.feedback.priority_growth || 'Keep practicing your PAR storytelling for even stronger answers.';
+
     try {
-      const data = await callClaude({
-        model: 'claude-sonnet-4-6', max_tokens: 300,
-        messages: [{ role: 'user', content: `You are a warm Braven interview coach. Based on these three feedback summaries from ${fellowName}'s mock interview session, write 1 sentence for their overall strength and 1 sentence for their top priority. Be specific and encouraging. Return ONLY JSON: {"overall_strength":"...","top_priority":"..."}\n\n${allFeedback.map((f,i)=>`Q${i+1}: Strength: ${f.feedback.overall_strength} | Growth: ${f.feedback.priority_growth}`).join('\n')}` }]
+      const summaryPrompt = `You are a warm but specific Braven interview coach. Based on these three feedback summaries from ${fellowName}'s mock interview session targeting ${targetCompany}${targetRole ? ' for a ' + targetRole + ' role' : ''}, write one sentence for their overall strength and one sentence for their top priority — both grounded in the actual feedback below, not generic encouragement. Return ONLY JSON: {"overall_strength":"...","top_priority":"..."}
+
+${allFeedback.map((f, i) => `Q${i+1} (${f.q}): Strength: ${f.feedback.overall_strength} | Growth: ${f.feedback.priority_growth}`).join('\n')}`;
+
+      const data = await claudeAPI({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 350,
+        messages: [{ role: 'user', content: summaryPrompt }],
       });
-      const parsed = JSON.parse(data.content.map(c=>c.text||'').join('').replace(/```json|```/g,'').trim());
-      strength = parsed.overall_strength; growth = parsed.top_priority;
-    } catch(e) {}
+      const parsed = JSON.parse(stripJsonFence(extractText(data)));
+      strength = parsed.overall_strength;
+      growth = parsed.top_priority;
+    } catch (e) { /* fall back to the values above */ }
+
     document.getElementById('summary-cards').innerHTML = `
       <div class="summary-card strength">
-        <h4>${iconStar} Your biggest strength</h4>
+        <h4>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Your biggest strength
+        </h4>
         <p>${strength}</p>
       </div>
       <div class="summary-card growth">
-        <h4>${iconTarget} Top priority before your real interview</h4>
+        <h4>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          Top priority before your real interview
+        </h4>
         <p>${growth}</p>
       </div>`;
   }
 
+  /* ── Restart ────────────────────────────────────────── */
   function restartDemo() {
-    currentQuestion=0; questions=[]; allFeedback=[];
-    document.getElementById('fellow-name').value='';
-    document.getElementById('target-company').value='';
-    document.getElementById('target-role').value='';
-    const btn=document.getElementById('start-btn');
-    btn.disabled=false; btn.textContent='Start my mock interview →';
-    document.getElementById('summary-screen').style.display='none';
-    document.getElementById('interview-screen').style.display='none';
-    document.getElementById('setup-screen').style.display='block';
-    document.getElementById('progress-fill').style.width='0%';
+    currentQuestion = 0; questions = []; allFeedback = []; companyResearch = '';
+    document.getElementById('fellow-name').value = '';
+    document.getElementById('target-company').value = '';
+    document.getElementById('target-role').value = '';
+    // keep API key filled for convenience
+    const btn = document.getElementById('start-btn');
+    btn.disabled = false; btn.textContent = 'Start my mock interview →';
+    document.getElementById('summary-screen').style.display = 'none';
+    document.getElementById('interview-screen').style.display = 'none';
+    document.getElementById('setup-screen').style.display = 'block';
+    document.getElementById('progress-fill').style.width = '0%';
+    document.getElementById('setup-error').style.display = 'none';
   }
 </script>
 </body>
